@@ -1,5 +1,6 @@
 import { Container, Typography } from "@mui/material"
 import CustomList, { IListData } from "../components/CustomList"
+import CustomTable from "../components/CustomTable"
 
 const EducationAndCourcesSection = () =>{
     const educationListData:IListData = {
@@ -35,6 +36,10 @@ const EducationAndCourcesSection = () =>{
             Education and courses
         </Typography>
         <CustomList listData={educationListData}/>
+        <Typography variant="h4" component={"h2"} textAlign={"center"} sx={{p:4}}>
+            Expirience
+        </Typography>
+        <CustomTable/>
         </Container>
         </>
     )

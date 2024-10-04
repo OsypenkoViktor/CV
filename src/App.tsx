@@ -7,6 +7,8 @@ import GeneralInfo from './sections/GeneralInfo';
 import EducationAndCourcesSection from './sections/EducationAndCoursesSection';
 import SoftSkillsSection from './sections/SoftSkillsSection';
 import FrontendSkillsSection from './sections/FrontendSkillsSection';
+import BackendSkillsSection from './sections/BackendSkillsSection';
+import ContactsSection from './sections/ContactsSection';
 
 
 
@@ -20,6 +22,8 @@ function App() {
     <EducationAndCourcesSection/>
     <SoftSkillsSection/>
     <FrontendSkillsSection/>
+    <BackendSkillsSection/>
+    <ContactsSection/>
     </Header>
     </>
   )
