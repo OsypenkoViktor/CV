@@ -1,11 +1,7 @@
 import MediaCard from "../components/MediaCard";
 
 const GeneralInfo = () => {
-  return (
-    <>
-      <MediaCard />
-    </>
-  );
+  return <MediaCard />;
 };
 
 export default GeneralInfo;

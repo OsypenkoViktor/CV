@@ -10,33 +10,20 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import InfoIcon from "@mui/icons-material/Info";
-import SchoolIcon from "@mui/icons-material/School";
-import SkillsIcon from "@mui/icons-material/AddTask";
-import WebIcon from "@mui/icons-material/Web";
-import TerminalIcon from "@mui/icons-material/Terminal";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import {  SvgIconProps } from "@mui/material";
-import { NavigationId } from "./SectionHeader";
+import {
+  ICustomListItem,
+  bottomPartOfList,
+  topPartOfList,
+} from "./data/headerData";
 
 const drawerWidth = 300;
 
 interface HeaderProps {
   children: React.ReactNode;
 }
-
-
-const drawerIconsSec2 = [
-  <MailIcon />,
-  <GitHubIcon />,
-  <KeyboardDoubleArrowRightIcon />,
-];
 
 export default function Header({ children }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -57,35 +44,15 @@ export default function Header({ children }: HeaderProps) {
     }
   };
 
-  const topPartOfList: ICustomListItem[] = [
-    { text: "General info", icon: InfoIcon, navigationId: "generalInfo" },
-    {
-      text: "Education and expirience",
-      icon: SchoolIcon,
-      navigationId: "education",
-    },
-    { text: "Soft skills", icon: SkillsIcon, navigationId: "softSkills" },
-    { text: "Frontend skills", icon: WebIcon, navigationId: "frontend" },
-    { text: "Backend skills", icon: TerminalIcon, navigationId: "backend" },
-  ];
-
-  const bottomPartOfList: ICustomListItem[] = [
-    {text:"Contacts", icon:MailIcon, navigationId:"contacts"},
-    {text:"Why me", icon:KeyboardDoubleArrowRightIcon, navigationId:"whyMe"}
-  ]
-
-  interface ICustomListItem {
-    icon: React.ElementType<SvgIconProps>;
-    text: string;
-    navigationId: NavigationId;
-  }
-
-  const CustomListItem = ({ icon: IconComponent, text,navigationId }: ICustomListItem) => {
-
-    function onClick(){
+  const CustomListItem = ({
+    icon: IconComponent,
+    text,
+    navigationId,
+  }: ICustomListItem) => {
+    function onClick() {
       const targetElement = document.getElementById(navigationId);
-      if(targetElement){
-        targetElement.scrollIntoView({behavior:"smooth"})
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
       }
     }
 
@@ -95,7 +62,7 @@ export default function Header({ children }: HeaderProps) {
           <ListItemIcon>
             <IconComponent />
           </ListItemIcon>
-        <ListItemText primary={text} />
+          <ListItemText primary={text} />
         </ListItemButton>
       </ListItem>
     );
@@ -110,14 +77,16 @@ export default function Header({ children }: HeaderProps) {
       </List>
       <Divider />
       <List>
-       {bottomPartOfList.map((el,i)=><CustomListItem key={i} {...el} />)}
+        {bottomPartOfList.map((el, i) => (
+          <CustomListItem key={i} {...el} />
+        ))}
       </List>
     </div>
   );
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline/>
+      <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
@@ -125,9 +94,13 @@ export default function Header({ children }: HeaderProps) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar sx={{display:{
-            md:"none"
-          }}}>
+        <Toolbar
+          sx={{
+            display: {
+              md: "none",
+            },
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -144,14 +117,13 @@ export default function Header({ children }: HeaderProps) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           variant="temporary"
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },

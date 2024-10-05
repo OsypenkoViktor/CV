@@ -12,7 +12,7 @@ export const navigationIds = {
   softSkillsSection: "softSkills",
   contacts: "contacts",
   educationAndCources: "education",
-  whyMe:"whyMe"
+  whyMe: "whyMe",
 } as const;
 
 export type NavigationId = (typeof navigationIds)[keyof typeof navigationIds];
@@ -24,7 +24,7 @@ const SectionHeader = ({ navigationId, title }: SectionHeaderProps) => {
       align="center"
       id={navigationId}
       sx={{
-        bgcolor: "gray !important",
+        bgcolor: "gray",
         my: 4,
         py: 4,
         width: "100%",

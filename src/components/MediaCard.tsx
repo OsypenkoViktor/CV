@@ -2,7 +2,7 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CardHeader, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import AspectRatio from "@mui/joy/AspectRatio";
 
 import mainPhoto from "../assets/GeneralInfoPhoto.jpg";
@@ -10,7 +10,7 @@ import SectionHeader from "./SectionHeader";
 
 export default function MediaCard() {
   return (
-    <Grid container spacing={2} sx={{ pt: { xs: 4,md:0 } }}>
+    <Grid container spacing={2} sx={{ pt: { xs: 4, md: 0 } }}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <SectionHeader
           navigationId="generalInfo"
