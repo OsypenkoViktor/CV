@@ -1,12 +1,11 @@
-import MediaCard from "../components/MediaCard"
+import MediaCard from "../components/MediaCard";
 
-const GeneralInfo = () =>{
+const GeneralInfo = () => {
+  return (
+    <>
+      <MediaCard />
+    </>
+  );
+};
 
-    return(
-        <>
-        <MediaCard/>
-        </>
-    )
-}
-
-export default GeneralInfo
+export default GeneralInfo;
