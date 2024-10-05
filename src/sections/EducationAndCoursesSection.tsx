@@ -1,6 +1,7 @@
 import { Container, Typography } from "@mui/material"
 import CustomList, { IListData } from "../components/CustomList"
 import CustomTable from "../components/CustomTable"
+import SectionHeader from "../components/SectionHeader"
 
 const EducationAndCourcesSection = () =>{
     const educationListData:IListData = {
@@ -30,11 +31,9 @@ const EducationAndCourcesSection = () =>{
     return(
         <>
          <Container 
-         sx={{alignItems:"center",p:2}}
+         sx={{alignItems:"center"}}
          >
-        <Typography variant="h4" component={"h2"} textAlign={"center"}>
-            Education and courses
-        </Typography>
+        <SectionHeader title="Education and cources" navigationId="education"/>
         <CustomList listData={educationListData}/>
         <Typography variant="h4" component={"h2"} textAlign={"center"} sx={{p:4}}>
             Expirience

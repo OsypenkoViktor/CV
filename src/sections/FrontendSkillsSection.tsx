@@ -1,5 +1,6 @@
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import CustomList, { IListData } from "../components/CustomList";
+import SectionHeader from "../components/SectionHeader";
 
 const FrontendSkillsSection = () => {
   const frontendSkillsListData: IListData = {
@@ -41,9 +42,7 @@ const FrontendSkillsSection = () => {
   return (
     <>
       <Container sx={{ alignItems: "center", p: 2 }}>
-        <Typography variant="h4" component={"h2"} textAlign={"center"}>
-          Frontend skills and expirience
-        </Typography>
+        <SectionHeader title="Frontend scills and expirience" navigationId="frontend"/>
         <CustomList listData={frontendSkillsListData} />
       </Container>
     </>

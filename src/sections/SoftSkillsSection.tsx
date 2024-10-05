@@ -1,5 +1,6 @@
 import { Container, Typography } from "@mui/material"
 import CustomList, { IListData } from "../components/CustomList"
+import SectionHeader from "../components/SectionHeader"
 
 const SoftSkillsSection = () =>{
     const softSkillsListData:IListData = {
@@ -13,9 +14,7 @@ const SoftSkillsSection = () =>{
          <Container 
          sx={{alignItems:"center",p:2}}
          >
-        <Typography variant="h4" component={"h2"} textAlign={"center"}>
-            Soft skills
-        </Typography>
+        <SectionHeader title="Soft skills" navigationId="softSkills"/>
         <CustomList listData={softSkillsListData}/>
         </Container>
         </>

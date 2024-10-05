@@ -1,49 +1,44 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import InfoIcon from '@mui/icons-material/Info';
-import SchoolIcon from '@mui/icons-material/School';
-import SkillsIcon from '@mui/icons-material/AddTask';
-import WebIcon from '@mui/icons-material/Web';
-import TerminalIcon from '@mui/icons-material/Terminal';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import MailIcon from "@mui/icons-material/Mail";
+import MenuIcon from "@mui/icons-material/Menu";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import InfoIcon from "@mui/icons-material/Info";
+import SchoolIcon from "@mui/icons-material/School";
+import SkillsIcon from "@mui/icons-material/AddTask";
+import WebIcon from "@mui/icons-material/Web";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import {  SvgIconProps } from "@mui/material";
+import { NavigationId } from "./SectionHeader";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 interface HeaderProps {
-    children:React.ReactNode
+  children: React.ReactNode;
 }
 
-const drawerIconsSec1 = [
-    <InfoIcon/>,
-    <SchoolIcon/>,
-    <SkillsIcon/>,
-    <WebIcon/>,
-    <TerminalIcon/>,
-]
 
-const drawerIconsSec2 =[
-    <MailIcon/>,
-    <GitHubIcon/>,
-    <KeyboardDoubleArrowRightIcon/>
-]
+const drawerIconsSec2 = [
+  <MailIcon />,
+  <GitHubIcon />,
+  <KeyboardDoubleArrowRightIcon />,
+];
 
-export default function Header({children}:HeaderProps) {
+export default function Header({ children }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
@@ -62,42 +57,67 @@ export default function Header({children}:HeaderProps) {
     }
   };
 
+  const topPartOfList: ICustomListItem[] = [
+    { text: "General info", icon: InfoIcon, navigationId: "generalInfo" },
+    {
+      text: "Education and expirience",
+      icon: SchoolIcon,
+      navigationId: "education",
+    },
+    { text: "Soft skills", icon: SkillsIcon, navigationId: "softSkills" },
+    { text: "Frontend skills", icon: WebIcon, navigationId: "frontend" },
+    { text: "Backend skills", icon: TerminalIcon, navigationId: "backend" },
+  ];
+
+  const bottomPartOfList: ICustomListItem[] = [
+    {text:"Contacts", icon:MailIcon, navigationId:"contacts"},
+    {text:"Why me", icon:KeyboardDoubleArrowRightIcon, navigationId:"whyMe"}
+  ]
+
+  interface ICustomListItem {
+    icon: React.ElementType<SvgIconProps>;
+    text: string;
+    navigationId: NavigationId;
+  }
+
+  const CustomListItem = ({ icon: IconComponent, text,navigationId }: ICustomListItem) => {
+
+    function onClick(){
+      const targetElement = document.getElementById(navigationId);
+      if(targetElement){
+        targetElement.scrollIntoView({behavior:"smooth"})
+      }
+    }
+
+    return (
+      <ListItem disablePadding>
+        <ListItemButton onClick={onClick}>
+          <ListItemIcon>
+            <IconComponent />
+          </ListItemIcon>
+        <ListItemText primary={text} />
+        </ListItemButton>
+      </ListItem>
+    );
+  };
+
   const drawer = (
     <div>
-      <Toolbar />
-      <Divider />
       <List>
-        {['General Info', 'Education and expirience','Soft skills', 'Frontend skills', 'Backend skills'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-               { drawerIconsSec1[index]}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {topPartOfList.map((el, i) => (
+          <CustomListItem key={i} {...el} />
         ))}
       </List>
       <Divider />
       <List>
-        {['Contacts', 'GitHub', 'Why me'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {drawerIconsSec2[index]}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+       {bottomPartOfList.map((el,i)=><CustomListItem key={i} {...el} />)}
       </List>
     </div>
   );
 
-
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline/>
       <AppBar
         position="fixed"
         sx={{
@@ -105,19 +125,18 @@ export default function Header({children}:HeaderProps) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{display:{
+            md:"none"
+          }}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Osypenko Viktor, web-developer
-          </Typography>
         </Toolbar>
       </AppBar>
       <Box
@@ -135,8 +154,11 @@ export default function Header({children}:HeaderProps) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
@@ -144,8 +166,11 @@ export default function Header({children}:HeaderProps) {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
           open
         >
@@ -154,9 +179,12 @@ export default function Header({children}:HeaderProps) {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
       >
-        <Toolbar />
         {children}
       </Box>
     </Box>

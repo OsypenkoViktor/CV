@@ -4,6 +4,7 @@ import {
   ListItemText,
   ListSubheader,
 } from "@mui/material";
+import React from "react";
 
 export interface IListData {
   [key:string]:{
@@ -26,46 +27,20 @@ const CustomList = ({listData}:{listData:IListData}) => {
       maxHeight: 300,
       '& ul': { padding: 0 },
     }}
-    subheader={<li />}
+    subheader={<ListSubheader />}
   >
 
-    {Object.entries(listData).map(([subheader,LIdata])=>(
-      <li>
+    {Object.entries(listData).map(([subheader,LIdata],i)=>(
+      <React.Fragment key={i}>
         <GraySubheader text={subheader}/>
-        {LIdata.map((LI)=>(
-           <ListItem>
+        {LIdata.map((LI,i)=>(
+           <ListItem key={i}>
            <ListItemText primary={LI.primaryText}  secondary={LI.secondaryText}/>
          </ListItem>
         ))}
-      </li>
+      </React.Fragment>
     ))}
-{/*       <li>
-          <GraySubheader text="Kryvyj Rih National University"/>
-            <ListItem>
-              <ListItemText primary={"Geography teacher"}  secondary={"Masters degree"}/>
-            </ListItem>
-      </li>
-      <li>
-          <GraySubheader text="QATestLab courses"/>
-            <ListItem>
-              <ListItemText primary={"Manual QA"}  secondary={`Introduction to testing. 
-                Web projects testing. 
-                Functional testing approaches.
-                Software testing life cycle.
-                Test design.
-                Mobile application testing.
-                Game testing `}/>
-            </ListItem>
-      </li>
-      <li>
-            <GraySubheader text="ITVDN"/>
-            <ListItem>
-              <ListItemText primary={"Basic HTML and CSS"}  secondary={"certificate"}/>
-            </ListItem>
-            <ListItem>
-              <ListItemText primary={"Basic HTML and CSS"}  secondary={"certificate"}/>
-            </ListItem>
-      </li> */}
+
   </List>
   );
 };
