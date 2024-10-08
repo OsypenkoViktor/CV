@@ -18,9 +18,6 @@ import {
   bottomPartOfList,
   topPartOfList,
 } from "./data/headerData";
-
-const drawerWidth = 300;
-
 interface HeaderProps {
   children: React.ReactNode;
 }
@@ -28,6 +25,8 @@ interface HeaderProps {
 export default function Header({ children }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+
+  let drawerWidth = 300;
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -62,7 +61,17 @@ export default function Header({ children }: HeaderProps) {
           <ListItemIcon>
             <IconComponent />
           </ListItemIcon>
-          <ListItemText primary={text} />
+          <ListItemText
+            primary={text}
+            sx={{
+              "& .MuiListItemText-primary": {
+                fontSize: "20px", // Звичайний розмір шрифту
+                "@media (max-width:600px)": {
+                  fontSize: "30px", // Зменшення шрифту для екранів до 600px
+                },
+              },
+            }}
+          />
         </ListItemButton>
       </ListItem>
     );
@@ -91,6 +100,7 @@ export default function Header({ children }: HeaderProps) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          /* height: { xs: 80, sm: 0, lg: 0 }, */
           ml: { sm: `${drawerWidth}px` },
         }}
       >
@@ -129,7 +139,7 @@ export default function Header({ children }: HeaderProps) {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
+              width: drawerWidth + 200,
             },
           }}
         >

@@ -15,18 +15,20 @@ import WhyMeSection from "./sections/WhyMeSection";
 function App() {
   return (
     <Header>
-      <Box sx={{
-        "& > *:nth-of-type(even)":{
-          border:"1px gray solid"
-        }
-      }}>
+      <Box
+        sx={{
+          "& > *:nth-of-type(even)": {
+            border: "1px gray solid",
+          },
+        }}
+      >
         <GeneralInfo />
         <EducationAndCourcesSection />
         <SoftSkillsSection />
         <FrontendSkillsSection />
         <BackendSkillsSection />
         <ContactsSection />
-        <WhyMeSection/>
+        <WhyMeSection />
       </Box>
     </Header>
   );
