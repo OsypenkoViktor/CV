@@ -6,7 +6,7 @@ import { frontendSkillsListData } from "./data/frontentData";
 const FrontendSkillsSection = () => {
   return (
     <>
-      <Container sx={{ alignItems: "center", p: 2 }}>
+      <Container sx={{ alignItems: "center", p: 2, w: "100%" }}>
         <SectionHeader
           title="Frontend scills and expirience"
           navigationId="frontend"

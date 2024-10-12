@@ -63,14 +63,14 @@ export default function Header({ children }: HeaderProps) {
           </ListItemIcon>
           <ListItemText
             primary={text}
-            sx={{
+            /* sx={{
               "& .MuiListItemText-primary": {
                 fontSize: "20px", // Звичайний розмір шрифту
                 "@media (max-width:600px)": {
-                  fontSize: "30px", // Зменшення шрифту для екранів до 600px
+                  fontSize: "20px", // Зменшення шрифту для екранів до 600px
                 },
               },
-            }}
+            }} */
           />
         </ListItemButton>
       </ListItem>
@@ -100,7 +100,7 @@ export default function Header({ children }: HeaderProps) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          /* height: { xs: 80, sm: 0, lg: 0 }, */
+          height: { xs: 80, sm: 0, lg: 0 },
           ml: { sm: `${drawerWidth}px` },
         }}
       >
@@ -139,7 +139,7 @@ export default function Header({ children }: HeaderProps) {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth + 200,
+              width: drawerWidth,
             },
           }}
         >
@@ -164,7 +164,7 @@ export default function Header({ children }: HeaderProps) {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: "100%",
         }}
       >
         {children}

@@ -7,7 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { IExpirienceRow } from "../sections/data/educationData";
 
 interface CustomTableProps {
@@ -17,7 +17,7 @@ interface CustomTableProps {
 const CustomTable = ({ rows }: CustomTableProps) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table aria-label="customized table">
         <TableHead sx={{ bgcolor: "lightblue" }}>
           <TableRow>
             <StyledTableCell>Position</StyledTableCell>

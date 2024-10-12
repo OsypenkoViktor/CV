@@ -6,7 +6,7 @@ import { backendSkillsListData } from "./data/backendData";
 const BackendSkillsSection = () => {
   return (
     <>
-      <Container sx={{ alignItems: "center", p: 2 }}>
+      <Container sx={{ alignItems: "center", p: 2, w: "100%" }}>
         <SectionHeader title="Backend" navigationId="backend" />
         <CustomList listData={backendSkillsListData} />
       </Container>

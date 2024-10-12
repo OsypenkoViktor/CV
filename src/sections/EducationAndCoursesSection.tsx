@@ -7,7 +7,7 @@ import { educationListData, rows } from "./data/educationData";
 const EducationAndCourcesSection = () => {
   return (
     <>
-      <Container sx={{ alignItems: "center" }}>
+      <Container sx={{ alignItems: "center", p: 2, w: "100%" }}>
         <SectionHeader title="Education and cources" navigationId="education" />
         <CustomList listData={educationListData} />
         <Typography

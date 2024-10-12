@@ -27,7 +27,6 @@ const SectionHeader = ({ navigationId, title }: SectionHeaderProps) => {
         bgcolor: "gray",
         my: 4,
         py: 4,
-        width: "100%",
         color: "wheat",
         borderBottomLeftRadius: "15px",
         borderTopRightRadius: "15px",

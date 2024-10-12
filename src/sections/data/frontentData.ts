@@ -1,3 +1,5 @@
+import { IListData } from "../../components/CustomList";
+
 export const frontendSkillsListData: IListData = {
   Basics: [
     {

@@ -11,6 +11,7 @@ import BackendSkillsSection from "./sections/BackendSkillsSection";
 import ContactsSection from "./sections/ContactsSection";
 import { Box } from "@mui/material";
 import WhyMeSection from "./sections/WhyMeSection";
+import "./index.css";
 
 function App() {
   return (
